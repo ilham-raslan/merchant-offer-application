@@ -1,9 +1,9 @@
 package com.ilham.github.merchant.offer.controller;
 
 import com.ilham.github.merchant.offer.model.Offer;
-import com.ilham.github.merchant.offer.model.OfferWithFlags;
 import com.ilham.github.merchant.offer.service.MerchantOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,18 +15,18 @@ public class MerchantOfferController {
     @Autowired
     private MerchantOfferService merchantOfferService;
 
-    @PostMapping("/offer")
+    @PostMapping("/offer/post")
     public ResponseEntity<String> postOffer(@RequestBody Offer offer) {
-        return merchantOfferService.postOffer(offer);
+        return new ResponseEntity<>(merchantOfferService.postOffer(offer), HttpStatus.OK);
     }
 
-    @GetMapping("/offer")
-    public ResponseEntity<List<OfferWithFlags>> getAllOffers() {
-        return merchantOfferService.getAllOffers();
+    @GetMapping("/offer/all")
+    public ResponseEntity<List<Offer>> getAllOffers() {
+        return new ResponseEntity<>(merchantOfferService.getAllOffers(),HttpStatus.OK);
     }
 
-    @PostMapping("/offer/cancel")
-    public ResponseEntity<String> cancelOffer(int id) {
-        return merchantOfferService.cancelOffer(id);
+    @PostMapping("/offer/cancel/{id}")
+    public ResponseEntity<String> cancelOffer(@PathVariable int id) {
+        return new ResponseEntity<>(merchantOfferService.cancelOffer(id),HttpStatus.OK);
     }
 }

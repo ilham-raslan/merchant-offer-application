@@ -1,0 +1,3 @@
+--drop table offer;
+--create table offer(id int auto_increment, description varchar(255), price double, currency varchar(255), expiryDate date, cancelledFlag boolean, expiredFlag boolean);
+--insert into offer(description,price,currency,expiryDate,cancelledFlag,expiredFlag) values('hello');
