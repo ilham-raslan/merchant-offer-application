@@ -4,6 +4,10 @@
 
 A Spring Boot application for merchants to place offers to sell their products. The database used is an in-memory embedded H2 database that is injected with data during application start-up.
 
+## High Level Design
+
+![Merchant Offer Application High Level Design](/images/high-level-design.png)
+
 ## Functional Requirements
 
 1. The offer the merchant places must have a description, price, currency and an expiry date.
