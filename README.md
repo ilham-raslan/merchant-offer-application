@@ -58,7 +58,7 @@ Endpoint to query for all the offers available, including flags for cancelled an
 
 ### POST /offer/cancel/{id}
 
-Endpoint to cancel the offer of the id passed in as the request parameter (e.g. to cancel order of id 1, POST /offer/cancel/1. Will return an exception response if the order does not exist, has expired or has already been cancelled.
+Endpoint to cancel the offer of the id passed in as the request parameter (e.g. to cancel order of id 1, POST /offer/cancel/1). Will return an exception response if the order does not exist, has expired or has already been cancelled.
 
 ## Functional Requirements
 
