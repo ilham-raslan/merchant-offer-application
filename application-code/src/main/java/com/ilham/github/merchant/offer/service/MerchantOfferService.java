@@ -5,6 +5,7 @@ import com.ilham.github.merchant.offer.repository.MerchantOfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +22,17 @@ public class MerchantOfferService {
     }
 
     public List<Offer> getAllOffers() {
-        return (List<Offer>) merchantOfferRepository.findAll();
+        List<Offer> currentOfferList = (List<Offer>) merchantOfferRepository.findAll();
+        List<Offer> modifiedOfferList = new ArrayList<>();
+
+        for (Offer offer : currentOfferList) {
+            if ((new Date()).after(offer.getExpiryDate())) {
+                offer.setExpiredFlag(true);
+            }
+            modifiedOfferList.add(offer);
+        }
+
+        return modifiedOfferList;
     }
 
     public String cancelOffer(int id) {
@@ -32,7 +43,7 @@ public class MerchantOfferService {
 
         Offer offer = optionalOffer.get();
 
-        if (offer.getExpiryDate().after(new Date())) {
+        if ((new Date()).after(offer.getExpiryDate())) {
             throw new IllegalArgumentException("Offer cancellation failed as the offer has already expired");
         }
 
