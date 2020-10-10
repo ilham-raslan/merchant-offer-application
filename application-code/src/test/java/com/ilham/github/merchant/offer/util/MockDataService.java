@@ -1,6 +1,7 @@
 package com.ilham.github.merchant.offer.util;
 
 import com.ilham.github.merchant.offer.model.Offer;
+import com.ilham.github.merchant.offer.model.OfferInput;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,14 @@ import java.util.Optional;
 public class MockDataService {
     public static Offer generateMockOffer() {
         return new Offer();
+    }
+
+    public static Offer generateMockOfferFromMockOfferInput() throws ParseException {
+        return new Offer(0,"DUMMY",1.23,"DUMMY",new SimpleDateFormat("dd/MM/yy").parse("01/02/2021"),false,false);
+    }
+
+    public static OfferInput generateMockOfferInput() throws ParseException {
+        return new OfferInput("DUMMY",1.23,"DUMMY",new SimpleDateFormat("dd/MM/yy").parse("01/02/2021"));
     }
 
     public static List<Offer> generateMockListOfOffers() throws ParseException {
@@ -32,6 +41,11 @@ public class MockDataService {
 
     public static Optional<Offer> generateMockExpiredOptionalOffer() {
         Offer offer = new Offer(1,"DUMMY",1.23,"DUMMY", new Date(new Date().getTime() - (1000 * 60 * 60 * 24)),false,false);
+        return Optional.of(offer);
+    }
+
+    public static Optional<Offer> generateMockCancelledOptionalOffer() {
+        Offer offer = new Offer(1,"DUMMY",1.23,"DUMMY", new Date(new Date().getTime() + (1000 * 60 * 60 * 24)),true,false);
         return Optional.of(offer);
     }
 

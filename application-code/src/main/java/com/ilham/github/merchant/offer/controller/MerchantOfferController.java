@@ -1,6 +1,7 @@
 package com.ilham.github.merchant.offer.controller;
 
 import com.ilham.github.merchant.offer.model.Offer;
+import com.ilham.github.merchant.offer.model.OfferInput;
 import com.ilham.github.merchant.offer.service.MerchantOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,8 +17,8 @@ public class MerchantOfferController {
     private MerchantOfferService merchantOfferService;
 
     @PostMapping("/offer/post")
-    public ResponseEntity<String> postOffer(@RequestBody Offer offer) {
-        return new ResponseEntity<>(merchantOfferService.postOffer(offer), HttpStatus.OK);
+    public ResponseEntity<String> postOffer(@RequestBody OfferInput offerInput) {
+        return new ResponseEntity<>(merchantOfferService.postOffer(offerInput), HttpStatus.OK);
     }
 
     @GetMapping("/offer/all")
