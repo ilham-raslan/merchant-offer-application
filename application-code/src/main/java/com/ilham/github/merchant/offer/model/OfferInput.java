@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+/**
+ * OfferInput model class to be populated by the merchant
+ */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
